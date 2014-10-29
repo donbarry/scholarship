@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+
+    <title>Scholarship Seeker</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/css/loading-bar.css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/css/social-buttons.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Find Scholarships</a>
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                <ul class="nav navbar-nav navbar-right">
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome <span id="username"></span></a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/profile">My Profile</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/favorites">My Favorites</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Find Scholarships
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    <!--<div class="jumbotron">-->
+        <!--<div class="container">-->
+<!--            <div class="page-header text-center">
+                <h1>Search for your scholarships here...</h1>
+            </div>
+            <p></p>-->
+        <!--</div>-->
+    <!--</div>-->
+
+            <div id="page-content-wrapper">
+            <div class="container-fluid">
+<h1 id="title"></h1>
+<p><b>Scholarship Purpose: </b><span id="purpose">This fund was established in 1995 in memory of John L. Baldini '41 by his family, his friends, and both political parties. Baldini served on Illinois State University's Alumni Board for 12 years, and was a founding member of the Redbird Club. He owned and operated the Lucca Grill in Bloomington and was active in the Democratic Party at the county and state levels for more than 50 years. Baldini was respected by both political parties for his compassion and interest in others, for his honesty, and his positive impact on all with whom he interacted. Each candidate for this scholarship must be a full- time student at Illinois State or an incoming freshman who will be a full time student, be a resident of McLean County with demonstrated financial need, and have a demonstrated interest in community service and concern for humankind. Assets of this endowment are invested in the Illinois State University Endowment Investment Pool.</span></p>
+<p><b>Department: </b><span id="department">Financial Aid Office - Provost</span>.</p>
+<h2>Requirements</h2>
+<p><b>Minimum Undergraduate GPA: </b><span id="undergradGPA">2.75</span>
+<!-- googleoff: snippet <span class='searchTags'>2.75 , 2.85 , 2.9 , 2.95 , 3.0 , 3.05 , 3.1 , 3.15 , 3.2 , 3.25 , 3.3 , 3.35 , 3.4 , 3.45 , 3.5 , 3.55 , 3.6 , 3.65 , 3.7 , 3.75 , 3.8 , 3.85 , 3.9 , 3.95 , 4.0 , 4.05 , 4.1 </span> googleon: snippet --></p>
+<p><b>High School GPA: </b><span id="highschoolGPA">2.75</span>
+<!-- googleoff: snippet <span class='searchTags'>2.75 , 2.85 , 2.9 , 2.95 , 3.0 , 3.05 , 3.1 , 3.15 , 3.2 , 3.25 , 3.3 , 3.35 , 3.4 , 3.45 , 3.5 , 3.55 , 3.6 , 3.65 , 3.7 , 3.75 , 3.8 , 3.85 , 3.9 , 3.95 , 4.0 , 4.05 , 4.1 </span> googleon: snippet --></p>
+<p><b>Essay: </b> <span id="essay">An Essay is required towards applying for this scholarship</span>.</p>
+<p><b>Application Deadline: </b> <span id="deadline">No deadline has been specified</span>. </p>
+<!-- googleoff: snippet --><span class='searchTags'>NODEADLINE</span><!-- googleon: snippet -->
+<p><b>Financial Need: </b><span id="financialneed">This scholarship requires a student to have a Financial Need to be eligible to receive the scholarship. In order to establish "Financial Need", a student must file the Free Application for Federal Student Aid (FAFSA). You can file the FAFSA at <a target='_blank' href="http://www.fafsa.ed.gov/">www.fafsa.ed.gov</a></span>.</p>
+<p id="international">This scholarship is not open to International Students.</p>
+<p><b>Community Service: </b>  <span id="communityservice">There is a community service requirement in applying for this scholarship</span>.</p>
+<p><b>Leadership: </b>  <span id="leadership">There is a leadership experience requirement in applying for this scholarship</span>.</p>        
+    </div>
+                </div>
+    <hr />
+        </div>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3rd party libraries -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <!--<script src="scripts/loading-bar.min.js"></script>-->
+  <script>
+      var uri = 'api/scholarships';
+
+      $(document).ready(function () {
+          var params = window.location.search.substring(1);
+          $.getJSON("http://localhost:9301/api/scholarshippage?" + params)
+              .done(function (data) {
+                  $.each(data, function (key, item) {
+                      console.log(data);
+                      $('#title').text(data.title);
+                      $('#purpose').text(data.purpose);
+                      $('#department').text(data.department + " - " + data.college);
+                      $('#undergradGPA').text(data.undergradGPA);
+                      $('#highschoolGPA').text(data.highschoolGPA);
+                      $('#essay').text(data.essay);
+                      $('#deadline').text(data.deadline);
+                      $('#financialneed').text(data.financialneed);
+                      $('#international').text(data.international);
+                      $('#communityservice').text(data.communityservice);
+                      $('#leadership').text(data.leadership);
+                  });
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#department').text('Error: ' + err);
+              });
+      });
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\Scholarship.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\Scholarship.pdb
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\EntityFramework.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\Newtonsoft.Json.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Net.Http.Formatting.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Web.Http.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Web.Http.WebHost.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\EntityFramework.xml
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\Newtonsoft.Json.xml
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Net.Http.Formatting.xml
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Web.Http.xml
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\System.Web.Http.WebHost.xml
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\obj\Debug\Scholarship.csprojResolveAssemblyReference.cache
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\obj\Debug\Scholarship.dll
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\obj\Debug\Scholarship.pdb
+C:\Users\DONB\Documents\Visual Studio 2012\Projects\Scholarship\Scholarship\bin\Oracle.ManagedDataAccess.dll

@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ModelSch.Store" Alias="Self" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="10.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ModelSchStoreContainer">
+          <EntitySet Name="FUND" EntityType="ModelSch.Store.FUND" store:Type="Tables" Schema="SUMMIT" />
+          <EntitySet Name="SCHLRSHP" EntityType="ModelSch.Store.SCHLRSHP" store:Type="Tables" Schema="SUMMIT" />
+          <EntitySet Name="USER_CODE" EntityType="ModelSch.Store.USER_CODE" store:Type="Tables" Schema="SUMMIT" />
+          <EntitySet Name="FUND_COLL_ATTRB" EntityType="ModelSch.Store.FUND_COLL_ATTRB" store:Type="Tables" Schema="UHELP" />
+          <EntitySet Name="FUND_DEPT_ATTRB" EntityType="ModelSch.Store.FUND_DEPT_ATTRB" store:Type="Tables" Schema="UHELP" />
+          <EntitySet Name="USER_CD" EntityType="ModelSch.Store.USER_CD" store:Type="Tables" Schema="UHELP" />
+          <AssociationSet Name="ALB3008I" Association="ModelSch.Store.ALB3008I">
+            <End Role="FUND_DEPT_ATTRB" EntitySet="FUND_DEPT_ATTRB" />
+            <End Role="FUND" EntitySet="FUND" />
+          </AssociationSet>
+          <AssociationSet Name="ALB3015I" Association="ModelSch.Store.ALB3015I">
+            <End Role="FUND_COLL_ATTRB" EntitySet="FUND_COLL_ATTRB" />
+            <End Role="FUND" EntitySet="FUND" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FUND">
+          <Key>
+            <PropertyRef Name="FUND_ACCT" />
+          </Key>
+          <Property Name="FUND_ACCT" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="FUND_TITLE" Type="char" Nullable="false" MaxLength="120" />
+          <Property Name="FUND_SHORT_TITLE" Type="char" Nullable="false" MaxLength="40" />
+          <Property Name="FUND_UPDT_DATEDB" Type="date" Nullable="false" />
+          <Property Name="UPDT_USER_ID" Type="char" Nullable="false" MaxLength="9" />
+          <Property Name="FUND_GRP_ATTRB" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_PRPS_ATTRB" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_LOC_ATTRB" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_TYPE_ATTRB" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_RVIEW_ATTRB" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_COLL_ATTRB" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="FUND_DEPT_ATTRB" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="FUND_BDGT_GRP" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_BDGT_UNIT" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="FUND_OPEN_ATTRB" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="FUND_OPEN_DATEDB" Type="date" Nullable="false" />
+          <Property Name="FUND_TRNSF_FUND" Type="char" MaxLength="12" />
+          <Property Name="FUND_ACCT_ID" Type="char" MaxLength="35" />
+          <Property Name="DONOR_CNSTT_ID" Type="char" MaxLength="9" />
+          <Property Name="FUND_CMNT" Type="char" MaxLength="120" />
+          <Property Name="GIFT_PREM_CD" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="PRMRY_GOAL_ATTRB" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="SCNDRY_GOAL_ATTRB" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="FUND_USER_VARBL1" Type="char" MaxLength="8" />
+          <Property Name="FUND_USER_VARBL2" Type="char" MaxLength="8" />
+          <Property Name="FUND_USER_VARBL3" Type="char" MaxLength="8" />
+          <Property Name="LEVY_CD" Type="char" MaxLength="3" />
+          <Property Name="AUDIT_TRAN_ID" Type="number" Precision="16" />
+          <Property Name="FUND_DDCTN_IND" Type="char" MaxLength="1" />
+          <Property Name="FUND_ORG_LVL1" Type="char" MaxLength="5" />
+          <Property Name="FUND_ORG_LVL2" Type="char" MaxLength="5" />
+          <Property Name="FUND_ORG_LVL3" Type="char" MaxLength="5" />
+          <Property Name="FUND_ORG_LVL4" Type="char" MaxLength="5" />
+          <Property Name="FUND_ORG_LVL5" Type="char" MaxLength="5" />
+          <Property Name="TRNSFR_TO_GL" Type="char" MaxLength="1" />
+          <Property Name="FUND_DESCR" Type="varchar2" MaxLength="1000" />
+          <Property Name="FUND_USER_VARBL4" Type="number" Precision="7" />
+          <Property Name="FUND_USER_VARBL5" Type="char" MaxLength="25" />
+          <Property Name="FUND_USER_VARBL6" Type="char" MaxLength="10" />
+          <Property Name="FUND_USER_VARBL7" Type="char" MaxLength="10" />
+          <Property Name="FUND_USER_VARBL8" Type="char" MaxLength="10" />
+          <Property Name="FUND_USER_VARBL9" Type="char" MaxLength="10" />
+          <Property Name="FUND_USER_VARBL10" Type="char" MaxLength="25" />
+          <Property Name="SPCL_PROJ" Type="char" MaxLength="5" />
+          <Property Name="FUND_USER_VARBL11" Type="number" Precision="13" Scale="2" />
+          <Property Name="FUND_USER_VARBL12" Type="number" Precision="13" Scale="2" />
+          <Property Name="FUND_USER_VARBL13" Type="number" Precision="13" Scale="2" />
+        </EntityType>
+        <EntityType Name="SCHLRSHP">
+          <Key>
+            <PropertyRef Name="FUND_ACCT" />
+            <PropertyRef Name="SCHLRSHP_NUM" />
+          </Key>
+          <Property Name="FUND_ACCT" Type="char" Nullable="false" MaxLength="12" />
+          <Property Name="SCHLRSHP_NUM" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="SCHLRSHP_TITLE" Type="char" Nullable="false" MaxLength="60" />
+          <Property Name="SCHLRSHP_PGRM" Type="char" Nullable="false" MaxLength="3" />
+          <Property Name="SCHLRSHP_PRPS" Type="varchar2" Nullable="false" MaxLength="1000" />
+          <Property Name="SCHLRSHP_CRTRIA" Type="varchar2" Nullable="false" MaxLength="1000" />
+          <Property Name="CUR_YR_TOT_ALLOC" Type="number" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="SCHLRSHP_STTUS" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SCHLR_USER_VARBL1" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SCHLR_USER_VARBL2" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SCHLR_USER_VARBL3" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SCHLR_USER_VARBL4" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SCHLR_USER_VARBL5" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL6" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL7" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL8" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL9" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL10" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL11" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL12" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL13" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL14" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL15" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL16" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL17" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL18" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL19" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL20" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL21" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL22" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL23" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL24" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL25" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL26" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL27" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL28" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL29" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL30" Type="char" MaxLength="5" />
+          <Property Name="SCHLR_USER_VARBL31" Type="char" MaxLength="10" />
+          <Property Name="SCHLR_USER_VARBL32" Type="char" MaxLength="10" />
+          <Property Name="USER_VARBL_DATEDB1" Type="date" />
+          <Property Name="USER_VARBL_DATEDB2" Type="date" />
+          <Property Name="UPDT_DATEDB" Type="date" Nullable="false" />
+          <Property Name="FNCL_AID_ACCT_CD" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="FRML_SCHLRSHP_NAME" Type="char" Nullable="false" MaxLength="120" />
+          <Property Name="AUDIT_TRAN_ID" Type="number" Precision="16" />
+        </EntityType>
+        <EntityType Name="USER_CODE">
+          <Key>
+            <PropertyRef Name="USER_CD_SYS_ID" />
+          </Key>
+          <Property Name="USER_CD_SYS_ID" Type="number" Nullable="false" Precision="9" />
+          <Property Name="ID" Type="char" Nullable="false" MaxLength="9" />
+          <Property Name="USER_GRP" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="USER_CD" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="STTUS_IND" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="BEG_DATEDB" Type="date" Nullable="false" />
+          <Property Name="END_DATEDB" Type="date" />
+          <Property Name="UC_USER_VARBL1" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL2" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL3" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL4" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL5" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL7" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL8" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL9" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL10" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL11" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL12" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL13" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL14" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL15" Type="varchar2" MaxLength="50" />
+          <Property Name="UC_USER_VARBL6" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDT_USER_ID" Type="char" Nullable="false" MaxLength="8" />
+          <Property Name="UPDT_DATEDB" Type="date" Nullable="false" />
+          <Property Name="NOTE" Type="varchar2" MaxLength="1500" />
+          <Property Name="AUDIT_TRAN_ID" Type="number" Precision="16" />
+          <Property Name="PARENT_AUDIT_TRAN_ID" Type="number" Precision="16" />
+        </EntityType>
+        <EntityType Name="FUND_COLL_ATTRB">
+          <Key>
+            <PropertyRef Name="FUND_COLL_ATTRB" />
+          </Key>
+          <Property Name="FUND_COLL_ATTRB" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="FUND_COLL_DESCR" Type="char" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="FUND_DEPT_ATTRB">
+          <Key>
+            <PropertyRef Name="FUND_DEPT_ATTRB" />
+          </Key>
+          <Property Name="FUND_DEPT_ATTRB" Type="char" Nullable="false" MaxLength="10" />
+          <Property Name="FUND_DEPT_DESCR" Type="char" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="USER_CD">
+          <Key>
+            <PropertyRef Name="USER_GRP" />
+            <PropertyRef Name="USER_CD" />
+          </Key>
+          <Property Name="USER_GRP" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="USER_CD" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="USER_CD_DESCR" Type="char" Nullable="false" MaxLength="60" />
+        </EntityType>
+        <Association Name="ALB3008I">
+          <End Role="FUND_DEPT_ATTRB" Type="ModelSch.Store.FUND_DEPT_ATTRB" Multiplicity="1" />
+          <End Role="FUND" Type="ModelSch.Store.FUND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUND_DEPT_ATTRB">
+              <PropertyRef Name="FUND_DEPT_ATTRB" />
+            </Principal>
+            <Dependent Role="FUND">
+              <PropertyRef Name="FUND_DEPT_ATTRB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALB3015I">
+          <End Role="FUND_COLL_ATTRB" Type="ModelSch.Store.FUND_COLL_ATTRB" Multiplicity="1" />
+          <End Role="FUND" Type="ModelSch.Store.FUND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUND_COLL_ATTRB">
+              <PropertyRef Name="FUND_COLL_ATTRB" />
+            </Principal>
+            <Dependent Role="FUND">
+              <PropertyRef Name="FUND_COLL_ATTRB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelSch" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SchEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="FUNDs" EntityType="ModelSch.FUND" />
+          <EntitySet Name="SCHLRSHPs" EntityType="ModelSch.SCHLRSHP" />
+          <EntitySet Name="USER_CODE" EntityType="ModelSch.USER_CODE" />
+          <EntitySet Name="FUND_COLL_ATTRB" EntityType="ModelSch.FUND_COLL_ATTRB" />
+          <EntitySet Name="FUND_DEPT_ATTRB" EntityType="ModelSch.FUND_DEPT_ATTRB" />
+          <EntitySet Name="USER_CD" EntityType="ModelSch.USER_CD" />
+          <AssociationSet Name="ALB3008I" Association="ModelSch.ALB3008I">
+            <End Role="FUND_DEPT_ATTRB" EntitySet="FUND_DEPT_ATTRB" />
+            <End Role="FUND" EntitySet="FUNDs" />
+          </AssociationSet>
+          <AssociationSet Name="ALB3015I" Association="ModelSch.ALB3015I">
+            <End Role="FUND_COLL_ATTRB" EntitySet="FUND_COLL_ATTRB" />
+            <End Role="FUND" EntitySet="FUNDs" />
+          </AssociationSet>
+          <AssociationSet Name="FUNDSCHLRSHP" Association="ModelSch.FUNDSCHLRSHP">
+            <End Role="FUND" EntitySet="FUNDs" />
+            <End Role="SCHLRSHP" EntitySet="SCHLRSHPs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FUND">
+          <Key>
+            <PropertyRef Name="FUND_ACCT" />
+          </Key>
+          <Property Name="FUND_ACCT" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_TITLE" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_SHORT_TITLE" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_UPDT_DATEDB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UPDT_USER_ID" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_GRP_ATTRB" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_PRPS_ATTRB" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_LOC_ATTRB" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_TYPE_ATTRB" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_RVIEW_ATTRB" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_COLL_ATTRB" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_DEPT_ATTRB" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_BDGT_GRP" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_BDGT_UNIT" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_OPEN_ATTRB" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_OPEN_DATEDB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FUND_TRNSF_FUND" Type="String" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ACCT_ID" Type="String" MaxLength="35" Unicode="false" FixedLength="true" />
+          <Property Name="DONOR_CNSTT_ID" Type="String" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_CMNT" Type="String" MaxLength="120" Unicode="false" FixedLength="true" />
+          <Property Name="GIFT_PREM_CD" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="PRMRY_GOAL_ATTRB" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="SCNDRY_GOAL_ATTRB" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL1" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL2" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL3" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="LEVY_CD" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="AUDIT_TRAN_ID" Type="Int64" />
+          <Property Name="FUND_DDCTN_IND" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ORG_LVL1" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ORG_LVL2" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ORG_LVL3" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ORG_LVL4" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_ORG_LVL5" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="TRNSFR_TO_GL" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_DESCR" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="FUND_USER_VARBL4" Type="Int32" />
+          <Property Name="FUND_USER_VARBL5" Type="String" MaxLength="25" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL6" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL7" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL8" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL9" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL10" Type="String" MaxLength="25" Unicode="false" FixedLength="true" />
+          <Property Name="SPCL_PROJ" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_USER_VARBL11" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="FUND_USER_VARBL12" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="FUND_USER_VARBL13" Type="Decimal" Precision="13" Scale="2" />
+          <NavigationProperty Name="FUND_DEPT_ATTRB1" Relationship="ModelSch.ALB3008I" FromRole="FUND" ToRole="FUND_DEPT_ATTRB" />
+          <NavigationProperty Name="FUND_COLL_ATTRB1" Relationship="ModelSch.ALB3015I" FromRole="FUND" ToRole="FUND_COLL_ATTRB" />
+          <NavigationProperty Name="SCHLRSHPs" Relationship="ModelSch.FUNDSCHLRSHP" FromRole="FUND" ToRole="SCHLRSHP" />
+        </EntityType>
+        <EntityType Name="SCHLRSHP">
+          <Key>
+            <PropertyRef Name="FUND_ACCT" />
+            <PropertyRef Name="SCHLRSHP_NUM" />
+          </Key>
+          <Property Name="FUND_ACCT" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLRSHP_NUM" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLRSHP_TITLE" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLRSHP_PGRM" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLRSHP_PRPS" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="SCHLRSHP_CRTRIA" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="CUR_YR_TOT_ALLOC" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="SCHLRSHP_STTUS" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL1" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL2" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL3" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL4" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL5" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL6" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL7" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL8" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL9" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL10" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL11" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL12" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL13" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL14" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL15" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL16" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL17" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL18" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL19" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL20" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL21" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL22" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL23" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL24" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL25" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL26" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL27" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL28" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL29" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL30" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL31" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="SCHLR_USER_VARBL32" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="USER_VARBL_DATEDB1" Type="DateTime" Precision="0" />
+          <Property Name="USER_VARBL_DATEDB2" Type="DateTime" Precision="0" />
+          <Property Name="UPDT_DATEDB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FNCL_AID_ACCT_CD" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FRML_SCHLRSHP_NAME" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="true" />
+          <Property Name="AUDIT_TRAN_ID" Type="Int64" />
+          <NavigationProperty Name="FUND" Relationship="ModelSch.FUNDSCHLRSHP" FromRole="SCHLRSHP" ToRole="FUND" />
+          <Property Type="String" Name="FUNDFUND_ACCT" Nullable="false" MaxLength="12" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER_CODE">
+          <Key>
+            <PropertyRef Name="USER_CD_SYS_ID" />
+          </Key>
+          <Property Name="USER_CD_SYS_ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="USER_GRP" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="USER_CD" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="STTUS_IND" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="BEG_DATEDB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="END_DATEDB" Type="DateTime" Precision="0" />
+          <Property Name="UC_USER_VARBL1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL4" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL5" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL7" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL8" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL9" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL10" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL11" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL12" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL13" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL14" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL15" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UC_USER_VARBL6" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UPDT_USER_ID" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="UPDT_DATEDB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NOTE" Type="String" MaxLength="1500" Unicode="false" FixedLength="false" />
+          <Property Name="AUDIT_TRAN_ID" Type="Int64" />
+          <Property Name="PARENT_AUDIT_TRAN_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="FUND_COLL_ATTRB">
+          <Key>
+            <PropertyRef Name="FUND_COLL_ATTRB1" />
+          </Key>
+          <Property Name="FUND_COLL_ATTRB1" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_COLL_DESCR" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="FUNDs" Relationship="ModelSch.ALB3015I" FromRole="FUND_COLL_ATTRB" ToRole="FUND" />
+        </EntityType>
+        <EntityType Name="FUND_DEPT_ATTRB">
+          <Key>
+            <PropertyRef Name="FUND_DEPT_ATTRB1" />
+          </Key>
+          <Property Name="FUND_DEPT_ATTRB1" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="FUND_DEPT_DESCR" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="FUNDs" Relationship="ModelSch.ALB3008I" FromRole="FUND_DEPT_ATTRB" ToRole="FUND" />
+        </EntityType>
+        <EntityType Name="USER_CD">
+          <Key>
+            <PropertyRef Name="USER_GRP" />
+            <PropertyRef Name="USER_CD1" />
+          </Key>
+          <Property Name="USER_GRP" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="USER_CD1" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="USER_CD_DESCR" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <Association Name="ALB3008I">
+          <End Role="FUND_DEPT_ATTRB" Type="ModelSch.FUND_DEPT_ATTRB" Multiplicity="1" />
+          <End Role="FUND" Type="ModelSch.FUND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUND_DEPT_ATTRB">
+              <PropertyRef Name="FUND_DEPT_ATTRB1" />
+            </Principal>
+            <Dependent Role="FUND">
+              <PropertyRef Name="FUND_DEPT_ATTRB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ALB3015I">
+          <End Role="FUND_COLL_ATTRB" Type="ModelSch.FUND_COLL_ATTRB" Multiplicity="1" />
+          <End Role="FUND" Type="ModelSch.FUND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUND_COLL_ATTRB">
+              <PropertyRef Name="FUND_COLL_ATTRB1" />
+            </Principal>
+            <Dependent Role="FUND">
+              <PropertyRef Name="FUND_COLL_ATTRB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FUNDSCHLRSHP">
+          <End Type="ModelSch.FUND" Role="FUND" Multiplicity="1" />
+          <End Type="ModelSch.SCHLRSHP" Role="SCHLRSHP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FUND">
+              <PropertyRef Name="FUND_ACCT" />
+            </Principal>
+            <Dependent Role="SCHLRSHP">
+              <PropertyRef Name="FUNDFUND_ACCT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelSchStoreContainer" CdmEntityContainer="SchEntities">
+          <EntitySetMapping Name="FUNDs">
+            <EntityTypeMapping TypeName="ModelSch.FUND">
+              <MappingFragment StoreEntitySet="FUND">
+                <ScalarProperty Name="FUND_ACCT" ColumnName="FUND_ACCT" />
+                <ScalarProperty Name="FUND_TITLE" ColumnName="FUND_TITLE" />
+                <ScalarProperty Name="FUND_SHORT_TITLE" ColumnName="FUND_SHORT_TITLE" />
+                <ScalarProperty Name="FUND_UPDT_DATEDB" ColumnName="FUND_UPDT_DATEDB" />
+                <ScalarProperty Name="UPDT_USER_ID" ColumnName="UPDT_USER_ID" />
+                <ScalarProperty Name="FUND_GRP_ATTRB" ColumnName="FUND_GRP_ATTRB" />
+                <ScalarProperty Name="FUND_PRPS_ATTRB" ColumnName="FUND_PRPS_ATTRB" />
+                <ScalarProperty Name="FUND_LOC_ATTRB" ColumnName="FUND_LOC_ATTRB" />
+                <ScalarProperty Name="FUND_TYPE_ATTRB" ColumnName="FUND_TYPE_ATTRB" />
+                <ScalarProperty Name="FUND_RVIEW_ATTRB" ColumnName="FUND_RVIEW_ATTRB" />
+                <ScalarProperty Name="FUND_COLL_ATTRB" ColumnName="FUND_COLL_ATTRB" />
+                <ScalarProperty Name="FUND_DEPT_ATTRB" ColumnName="FUND_DEPT_ATTRB" />
+                <ScalarProperty Name="FUND_BDGT_GRP" ColumnName="FUND_BDGT_GRP" />
+                <ScalarProperty Name="FUND_BDGT_UNIT" ColumnName="FUND_BDGT_UNIT" />
+                <ScalarProperty Name="FUND_OPEN_ATTRB" ColumnName="FUND_OPEN_ATTRB" />
+                <ScalarProperty Name="FUND_OPEN_DATEDB" ColumnName="FUND_OPEN_DATEDB" />
+                <ScalarProperty Name="FUND_TRNSF_FUND" ColumnName="FUND_TRNSF_FUND" />
+                <ScalarProperty Name="FUND_ACCT_ID" ColumnName="FUND_ACCT_ID" />
+                <ScalarProperty Name="DONOR_CNSTT_ID" ColumnName="DONOR_CNSTT_ID" />
+                <ScalarProperty Name="FUND_CMNT" ColumnName="FUND_CMNT" />
+                <ScalarProperty Name="GIFT_PREM_CD" ColumnName="GIFT_PREM_CD" />
+                <ScalarProperty Name="PRMRY_GOAL_ATTRB" ColumnName="PRMRY_GOAL_ATTRB" />
+                <ScalarProperty Name="SCNDRY_GOAL_ATTRB" ColumnName="SCNDRY_GOAL_ATTRB" />
+                <ScalarProperty Name="FUND_USER_VARBL1" ColumnName="FUND_USER_VARBL1" />
+                <ScalarProperty Name="FUND_USER_VARBL2" ColumnName="FUND_USER_VARBL2" />
+                <ScalarProperty Name="FUND_USER_VARBL3" ColumnName="FUND_USER_VARBL3" />
+                <ScalarProperty Name="LEVY_CD" ColumnName="LEVY_CD" />
+                <ScalarProperty Name="AUDIT_TRAN_ID" ColumnName="AUDIT_TRAN_ID" />
+                <ScalarProperty Name="FUND_DDCTN_IND" ColumnName="FUND_DDCTN_IND" />
+                <ScalarProperty Name="FUND_ORG_LVL1" ColumnName="FUND_ORG_LVL1" />
+                <ScalarProperty Name="FUND_ORG_LVL2" ColumnName="FUND_ORG_LVL2" />
+                <ScalarProperty Name="FUND_ORG_LVL3" ColumnName="FUND_ORG_LVL3" />
+                <ScalarProperty Name="FUND_ORG_LVL4" ColumnName="FUND_ORG_LVL4" />
+                <ScalarProperty Name="FUND_ORG_LVL5" ColumnName="FUND_ORG_LVL5" />
+                <ScalarProperty Name="TRNSFR_TO_GL" ColumnName="TRNSFR_TO_GL" />
+                <ScalarProperty Name="FUND_DESCR" ColumnName="FUND_DESCR" />
+                <ScalarProperty Name="FUND_USER_VARBL4" ColumnName="FUND_USER_VARBL4" />
+                <ScalarProperty Name="FUND_USER_VARBL5" ColumnName="FUND_USER_VARBL5" />
+                <ScalarProperty Name="FUND_USER_VARBL6" ColumnName="FUND_USER_VARBL6" />
+                <ScalarProperty Name="FUND_USER_VARBL7" ColumnName="FUND_USER_VARBL7" />
+                <ScalarProperty Name="FUND_USER_VARBL8" ColumnName="FUND_USER_VARBL8" />
+                <ScalarProperty Name="FUND_USER_VARBL9" ColumnName="FUND_USER_VARBL9" />
+                <ScalarProperty Name="FUND_USER_VARBL10" ColumnName="FUND_USER_VARBL10" />
+                <ScalarProperty Name="SPCL_PROJ" ColumnName="SPCL_PROJ" />
+                <ScalarProperty Name="FUND_USER_VARBL11" ColumnName="FUND_USER_VARBL11" />
+                <ScalarProperty Name="FUND_USER_VARBL12" ColumnName="FUND_USER_VARBL12" />
+                <ScalarProperty Name="FUND_USER_VARBL13" ColumnName="FUND_USER_VARBL13" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SCHLRSHPs">
+            <EntityTypeMapping TypeName="ModelSch.SCHLRSHP">
+              <MappingFragment StoreEntitySet="SCHLRSHP">
+                <ScalarProperty Name="FUND_ACCT" ColumnName="FUND_ACCT" />
+                <ScalarProperty Name="SCHLRSHP_NUM" ColumnName="SCHLRSHP_NUM" />
+                <ScalarProperty Name="SCHLRSHP_TITLE" ColumnName="SCHLRSHP_TITLE" />
+                <ScalarProperty Name="SCHLRSHP_PGRM" ColumnName="SCHLRSHP_PGRM" />
+                <ScalarProperty Name="SCHLRSHP_PRPS" ColumnName="SCHLRSHP_PRPS" />
+                <ScalarProperty Name="SCHLRSHP_CRTRIA" ColumnName="SCHLRSHP_CRTRIA" />
+                <ScalarProperty Name="CUR_YR_TOT_ALLOC" ColumnName="CUR_YR_TOT_ALLOC" />
+                <ScalarProperty Name="SCHLRSHP_STTUS" ColumnName="SCHLRSHP_STTUS" />
+                <ScalarProperty Name="SCHLR_USER_VARBL1" ColumnName="SCHLR_USER_VARBL1" />
+                <ScalarProperty Name="SCHLR_USER_VARBL2" ColumnName="SCHLR_USER_VARBL2" />
+                <ScalarProperty Name="SCHLR_USER_VARBL3" ColumnName="SCHLR_USER_VARBL3" />
+                <ScalarProperty Name="SCHLR_USER_VARBL4" ColumnName="SCHLR_USER_VARBL4" />
+                <ScalarProperty Name="SCHLR_USER_VARBL5" ColumnName="SCHLR_USER_VARBL5" />
+                <ScalarProperty Name="SCHLR_USER_VARBL6" ColumnName="SCHLR_USER_VARBL6" />
+                <ScalarProperty Name="SCHLR_USER_VARBL7" ColumnName="SCHLR_USER_VARBL7" />
+                <ScalarProperty Name="SCHLR_USER_VARBL8" ColumnName="SCHLR_USER_VARBL8" />
+                <ScalarProperty Name="SCHLR_USER_VARBL9" ColumnName="SCHLR_USER_VARBL9" />
+                <ScalarProperty Name="SCHLR_USER_VARBL10" ColumnName="SCHLR_USER_VARBL10" />
+                <ScalarProperty Name="SCHLR_USER_VARBL11" ColumnName="SCHLR_USER_VARBL11" />
+                <ScalarProperty Name="SCHLR_USER_VARBL12" ColumnName="SCHLR_USER_VARBL12" />
+                <ScalarProperty Name="SCHLR_USER_VARBL13" ColumnName="SCHLR_USER_VARBL13" />
+                <ScalarProperty Name="SCHLR_USER_VARBL14" ColumnName="SCHLR_USER_VARBL14" />
+                <ScalarProperty Name="SCHLR_USER_VARBL15" ColumnName="SCHLR_USER_VARBL15" />
+                <ScalarProperty Name="SCHLR_USER_VARBL16" ColumnName="SCHLR_USER_VARBL16" />
+                <ScalarProperty Name="SCHLR_USER_VARBL17" ColumnName="SCHLR_USER_VARBL17" />
+                <ScalarProperty Name="SCHLR_USER_VARBL18" ColumnName="SCHLR_USER_VARBL18" />
+                <ScalarProperty Name="SCHLR_USER_VARBL19" ColumnName="SCHLR_USER_VARBL19" />
+                <ScalarProperty Name="SCHLR_USER_VARBL20" ColumnName="SCHLR_USER_VARBL20" />
+                <ScalarProperty Name="SCHLR_USER_VARBL21" ColumnName="SCHLR_USER_VARBL21" />
+                <ScalarProperty Name="SCHLR_USER_VARBL22" ColumnName="SCHLR_USER_VARBL22" />
+                <ScalarProperty Name="SCHLR_USER_VARBL23" ColumnName="SCHLR_USER_VARBL23" />
+                <ScalarProperty Name="SCHLR_USER_VARBL24" ColumnName="SCHLR_USER_VARBL24" />
+                <ScalarProperty Name="SCHLR_USER_VARBL25" ColumnName="SCHLR_USER_VARBL25" />
+                <ScalarProperty Name="SCHLR_USER_VARBL26" ColumnName="SCHLR_USER_VARBL26" />
+                <ScalarProperty Name="SCHLR_USER_VARBL27" ColumnName="SCHLR_USER_VARBL27" />
+                <ScalarProperty Name="SCHLR_USER_VARBL28" ColumnName="SCHLR_USER_VARBL28" />
+                <ScalarProperty Name="SCHLR_USER_VARBL29" ColumnName="SCHLR_USER_VARBL29" />
+                <ScalarProperty Name="SCHLR_USER_VARBL30" ColumnName="SCHLR_USER_VARBL30" />
+                <ScalarProperty Name="SCHLR_USER_VARBL31" ColumnName="SCHLR_USER_VARBL31" />
+                <ScalarProperty Name="SCHLR_USER_VARBL32" ColumnName="SCHLR_USER_VARBL32" />
+                <ScalarProperty Name="USER_VARBL_DATEDB1" ColumnName="USER_VARBL_DATEDB1" />
+                <ScalarProperty Name="USER_VARBL_DATEDB2" ColumnName="USER_VARBL_DATEDB2" />
+                <ScalarProperty Name="UPDT_DATEDB" ColumnName="UPDT_DATEDB" />
+                <ScalarProperty Name="FNCL_AID_ACCT_CD" ColumnName="FNCL_AID_ACCT_CD" />
+                <ScalarProperty Name="FRML_SCHLRSHP_NAME" ColumnName="FRML_SCHLRSHP_NAME" />
+                <ScalarProperty Name="AUDIT_TRAN_ID" ColumnName="AUDIT_TRAN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_CODE">
+            <EntityTypeMapping TypeName="ModelSch.USER_CODE">
+              <MappingFragment StoreEntitySet="USER_CODE">
+                <ScalarProperty Name="USER_CD_SYS_ID" ColumnName="USER_CD_SYS_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USER_GRP" ColumnName="USER_GRP" />
+                <ScalarProperty Name="USER_CD" ColumnName="USER_CD" />
+                <ScalarProperty Name="STTUS_IND" ColumnName="STTUS_IND" />
+                <ScalarProperty Name="BEG_DATEDB" ColumnName="BEG_DATEDB" />
+                <ScalarProperty Name="END_DATEDB" ColumnName="END_DATEDB" />
+                <ScalarProperty Name="UC_USER_VARBL1" ColumnName="UC_USER_VARBL1" />
+                <ScalarProperty Name="UC_USER_VARBL2" ColumnName="UC_USER_VARBL2" />
+                <ScalarProperty Name="UC_USER_VARBL3" ColumnName="UC_USER_VARBL3" />
+                <ScalarProperty Name="UC_USER_VARBL4" ColumnName="UC_USER_VARBL4" />
+                <ScalarProperty Name="UC_USER_VARBL5" ColumnName="UC_USER_VARBL5" />
+                <ScalarProperty Name="UC_USER_VARBL7" ColumnName="UC_USER_VARBL7" />
+                <ScalarProperty Name="UC_USER_VARBL8" ColumnName="UC_USER_VARBL8" />
+                <ScalarProperty Name="UC_USER_VARBL9" ColumnName="UC_USER_VARBL9" />
+                <ScalarProperty Name="UC_USER_VARBL10" ColumnName="UC_USER_VARBL10" />
+                <ScalarProperty Name="UC_USER_VARBL11" ColumnName="UC_USER_VARBL11" />
+                <ScalarProperty Name="UC_USER_VARBL12" ColumnName="UC_USER_VARBL12" />
+                <ScalarProperty Name="UC_USER_VARBL13" ColumnName="UC_USER_VARBL13" />
+                <ScalarProperty Name="UC_USER_VARBL14" ColumnName="UC_USER_VARBL14" />
+                <ScalarProperty Name="UC_USER_VARBL15" ColumnName="UC_USER_VARBL15" />
+                <ScalarProperty Name="UC_USER_VARBL6" ColumnName="UC_USER_VARBL6" />
+                <ScalarProperty Name="UPDT_USER_ID" ColumnName="UPDT_USER_ID" />
+                <ScalarProperty Name="UPDT_DATEDB" ColumnName="UPDT_DATEDB" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="AUDIT_TRAN_ID" ColumnName="AUDIT_TRAN_ID" />
+                <ScalarProperty Name="PARENT_AUDIT_TRAN_ID" ColumnName="PARENT_AUDIT_TRAN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUND_COLL_ATTRB">
+            <EntityTypeMapping TypeName="ModelSch.FUND_COLL_ATTRB">
+              <MappingFragment StoreEntitySet="FUND_COLL_ATTRB">
+                <ScalarProperty Name="FUND_COLL_ATTRB1" ColumnName="FUND_COLL_ATTRB" />
+                <ScalarProperty Name="FUND_COLL_DESCR" ColumnName="FUND_COLL_DESCR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FUND_DEPT_ATTRB">
+            <EntityTypeMapping TypeName="ModelSch.FUND_DEPT_ATTRB">
+              <MappingFragment StoreEntitySet="FUND_DEPT_ATTRB">
+                <ScalarProperty Name="FUND_DEPT_ATTRB1" ColumnName="FUND_DEPT_ATTRB" />
+                <ScalarProperty Name="FUND_DEPT_DESCR" ColumnName="FUND_DEPT_DESCR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_CD">
+            <EntityTypeMapping TypeName="ModelSch.USER_CD">
+              <MappingFragment StoreEntitySet="USER_CD">
+                <ScalarProperty Name="USER_GRP" ColumnName="USER_GRP" />
+                <ScalarProperty Name="USER_CD1" ColumnName="USER_CD" />
+                <ScalarProperty Name="USER_CD_DESCR" ColumnName="USER_CD_DESCR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

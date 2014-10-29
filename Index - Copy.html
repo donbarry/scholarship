@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+
+    <title>Scholarship Seeker</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/css/loading-bar.css" rel="stylesheet" />
+    <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/css/social-buttons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="indexController">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" data-ng-click="navbarExpanded = !navbarExpanded">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <a class="navbar-brand" href="#/">Find Scholarships</a>
+            </div>
+            <div class="collapse navbar-collapse" data-collapse="!navbarExpanded">
+                <ul class="nav navbar-nav navbar-right">
+                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome <span id="username"></span></a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/profile">My Profile</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/favorites">My Favorites</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Scholarship Categories
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+            </ul>
+        </div>
+    <!--<div class="jumbotron">-->
+        <!--<div class="container">-->
+<!--            <div class="page-header text-center">
+                <h1>Search for your scholarships here...</h1>
+            </div>
+            <p></p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div id="page-content-wrapper">
+    <div class="container">
+        <form class="form-login" role="form">
+            <h2 class="form-login-heading">Search Here...</h2>
+            <input id="title" type="text" class="form-control" placeholder="Title" autofocus>
+            <!--<input id="department" type="text" class="form-control" placeholder="Department" >-->
+            <select id="department" class="form-control" ></select>
+            <!--<input id="college" type="text" class="form-control" placeholder="College" >-->
+            <select id="college" class="form-control" ></select>
+            <select id="schoolyear" class="form-control" ></select>
+            <input id="major" type="text" class="form-control" placeholder="Major" autofocus>
+            <input id="undergradGPA" type="text" class="form-control" placeholder="Undergraduate GPA" autofocus>
+            <input id="gradGPA" type="text" class="form-control" placeholder="Graduate GPA" autofocus>
+            <input id="highschoolGPA" type="text" class="form-control" placeholder="High School GPA" autofocus>
+            <button id="searchbutton" class="btn btn-lg btn-info btn-block" type="button" onclick="find();">Search!</button>
+            <div id="msg" data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'"></div>
+            <div id="progressbar"></div>
+        </form>
+    </div>
+
+    <hr />
+    
+    <div class="container-fluid">
+    <table id="scholarship" class="table table-condensed table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Scholarships search result</th>
+            </tr>
+        </thead>
+        
+    </table>
+    </div>
+    </div>
+        </div>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+<!--                <div class="col-md-6">
+                    <p class="text-muted">Created by Taiseer Joudeh. Twitter: <a target="_blank" href="http://twitter.com/tjoudeh">@tjoudeh</a></p>
+                </div>
+                <div class="col-md-6">
+                    <p class="text-muted">Taiseer Joudeh Blog: <a target="_blank" href="http://bitoftech.net">bitoftech.net</a></p>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- 3rd party libraries -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <!--<script src="scripts/loading-bar.min.js"></script>-->
+  <script>
+      var uri = 'api/scholarships';
+
+      $(document).ready(function () {
+          $("#progressbar").progressbar({ value: false });
+          $.getJSON("api/dropdowndata")
+              .done(function (data) {
+                  $('#department').append($('<option>').text("(Any Department)").attr('value', -1));
+                  $('#college').append($('<option>').text("(Any College)").attr('value', -1));
+                  $('#schoolyear').append($('<option>').text("(Any School Year)").attr('value', -1));
+                  console.log(data);
+                  $.each(data.departments, function (key, item) {
+                      $('#department').append($('<option>').text(item.FUND_DEPT_DESCR).attr('value', item.FUND_DEPT_ATTRB));
+                  });
+                  $.each(data.colleges, function (key, item) {
+                      $('#college').append($('<option>').text(item.FUND_COLL_DESCR).attr('value', item.FUND_COLL_ATTRB));
+                  });
+                  $.each(data.schoolyears, function (key, item) {
+                      $('#schoolyear').append($('<option>').text(item.USER_CD_DESCR).attr('value', item.USER_CD));
+                  });
+
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#department').text('Error: ' + err);
+              });
+          $("#progressbar").progressbar({ value: true });
+
+      });
+
+
+      function find() {
+          var title = $('#title').val();
+
+          $("#progressbar").progressbar({ value: false });
+          //$("#progressbar").text("");
+          $.post("api/Search", //uri + "/post",
+          {
+              title: $('#title').val(),
+              department: $('#department').val(),
+              college: $('#college').val(),
+              schoolYear: $('#schoolyear').val(),
+              major: $('#major').val(),
+              undergradGPA: $('#undergradGPA').val(),
+              gradGPA: $('#gradGPA').val(),
+              highschoolGPA: $('#highschoolGPA').val()
+          },
+          function (data, status) {
+              $("#scholarship").empty();
+              $.each(data, function (key, item) {
+                  // Add a list item for the product.
+                  
+                  linkurl = $('<a>', { text: item.FRML_SCHLRSHP_NAME, href: "ScholarshipPage.html?f=" + item.FUND_ACCT.trim() + "&s=" + item.SCHLRSHP_NUM.trim(), target: "_blank" }) //consider accordion
+                  linkTD = $('<td>').append(linkurl);
+                  //$('<li>').append(linkurl).appendTo("#scholarship");
+                  $('<tr>').append(linkTD).appendTo("#scholarship");
+                  //$('#scholarship').append("<li><a href='" + "ScholarshipPage.html" + "'>" + item.SCHLRSHP_TITLE + "</a></li>");
+              });
+              console.log(data.length);
+              var num = data.length;
+              $("#progressbar").progressbar({ value: true });
+              $("#progressbar").text(num + " found below.")
+              $("body").animate({ scrollTop: $("#scholarship").offset().top-150 });
+              //console.log("Data: " + data + "\nStatus: " + status);
+          });
+          /*
+          $.getJSON(uri + '/' + title)
+              .done(function (data) {
+                  $('#scholarship').text(data.SCHLRSHP_TITLE);
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#scholarship').text('Error: ' + err);
+              });
+              */
+      }
+  </script>
+
+
+</body>
+</html>
