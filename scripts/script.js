@@ -3,7 +3,7 @@ var uri = 'api/scholarships';
 
 $(document).ready(function () {
     $("#progressbar").progressbar({ value: false });
-    $.getJSON("http://localhost:9301/api/dropdowndata")
+    $.getJSON("api/dropdowndata")
         .done(function (data) {
             $('#department').append($('<option>').text("(Any Department)").attr('value', -1));
             $('#college').append($('<option>').text("(Any College)").attr('value', -1));
@@ -59,7 +59,7 @@ function checkNull(strg) {
 function find() {
     var title = $('#title').val();
     $("#progressbar").progressbar({ value: false });
-    $.post("http://localhost:9301/api/Search", //uri + "/post",
+    $.post("api/Search", //uri + "/post",
     {
         title: $('#title').val(),
         department: $('#department').val(),
