@@ -181,3 +181,7 @@ body {
         margin-right: 0;
     }
 }
+#searchinfotable
+{
+	table-layout: auto;
+}
