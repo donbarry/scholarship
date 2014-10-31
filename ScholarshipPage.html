@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html >
 <head>
 
@@ -82,7 +82,7 @@
 <p><b>High School GPA: </b><span id="highschoolGPA">2.75</span>
 <p><b>Essay: </b> <span id="essay">An Essay is required towards applying for this scholarship</span>.</p>
 <p id="deadline"><b>Application Deadline: </b>No deadline has been specified. </p>
-<p id="financialneed"><b>Financial Need: </b>This scholarship requires a student to have a Financial Need to be eligible to receive the scholarship. In order to establish "Financial Need", a student must file the Free Application for Federal Student Aid (FAFSA). You can file the FAFSA at <a target='_blank' href="http://www.fafsa.ed.gov/">www.fafsa.ed.gov</a>.</p>
+<p id="financialneed">This scholarship requires a student to have a Financial Need to be eligible to receive the scholarship. In order to establish "Financial Need", a student must file the Free Application for Federal Student Aid (FAFSA). You can file the FAFSA at <a target='_blank' href="http://www.fafsa.ed.gov/">www.fafsa.ed.gov</a>.</p>
 <p id="international">This scholarship is not open to International Students.</p>
 <p id="communityservice">There is a community service requirement in applying for this scholarship.</p>
 <p><b>Leadership: </b>  <span id="leadership">There is a leadership experience requirement in applying for this scholarship</span>.</p>        
@@ -103,7 +103,6 @@
     <!--<script src="scripts/loading-bar.min.js"></script>-->
   <script>
       var uri = 'api/scholarships';
-
       $(document).ready(function () {
           var params = window.location.search.substring(1);
           $.getJSON("api/scholarshippage?" + params)

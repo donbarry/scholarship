@@ -1,4 +1,4 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,11 +59,11 @@ namespace Scholarship.Models
                 }
                 conn.Close(); // close the oracle connection
             }
-                return dt;
+            return dt;
         }
         public DropDownData GetDropDownData()
         {
-            DropDownData dropdownData=new DropDownData();
+            DropDownData dropdownData = new DropDownData();
             dropdownData.colleges = GetColleges();
             dropdownData.departments = GetDepartments();
             dropdownData.schoolyears = GetSchoolYears();
@@ -73,8 +73,8 @@ namespace Scholarship.Models
         public List<Department> GetDepartments()
         {
             string sqlstr = "SELECT * FROM UHELP.FUND_DEPT_ATTRB";
-            
-            DataTable dt = query(sqlstr,null);
+
+            DataTable dt = query(sqlstr, null);
             List<Department> departmentList = new List<Department>();
             Department aDepartment;
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -87,13 +87,13 @@ namespace Scholarship.Models
                 }
                 departmentList.Add(aDepartment);
             }
-            
+
             return departmentList;
         }
         public List<College> GetColleges()
         {
             string sqlstr = "SELECT * FROM UHELP.FUND_COLL_ATTRB";
-            DataTable dt = query(sqlstr,null);
+            DataTable dt = query(sqlstr, null);
             List<College> collegeList = new List<College>();
             College aCollege;
 
@@ -171,11 +171,11 @@ namespace Scholarship.Models
                 data.purpose = aScholarship.SCHLRSHP_PRPS;
                 data.gradGPA = aScholarship.SCHLR_USER_VARBL13;
                 data.undergradGPA = aScholarship.SCHLR_USER_VARBL14;
-                data.highschoolGPA =aScholarship.SCHLR_USER_VARBL15;
-                data.financialneed =  aScholarship.SCHLR_USER_VARBL4.Length==0 ? "" : "<b>Financial Need</b> : This scholarship requires a student to have a Financial Need to be eligible to receive the scholarship. In order to establish \"Financial Need\", a student must file the Free Application for Federal Student Aid (FAFSA). You can file the FAFSA at <a target='_blank' href=\"http://www.fafsa.ed.gov/\">www.fafsa.ed.gov</a>.";
+                data.highschoolGPA = aScholarship.SCHLR_USER_VARBL15;
+                data.financialneed = aScholarship.SCHLR_USER_VARBL4.Length == 0 ? "" : "<b>Financial Need</b> : This scholarship requires a student to have a Financial Need to be eligible to receive the scholarship. In order to establish \"Financial Need\", a student must file the Free Application for Federal Student Aid (FAFSA). You can file the FAFSA at <a target='_blank' href=\"http://www.fafsa.ed.gov/\">www.fafsa.ed.gov</a>.";
                 data.essay = (aScholarship.SCHLR_USER_VARBL11.Length == 0) ? "There is no essay required for this scholarship" : "An Essay is required towards applying for this scholarship";
                 data.international = (aScholarship.SCHLR_USER_VARBL3.ToLower().Equals("n")) ? "This scholarship is not open to International Students" : "";
-                data.referenceletter= (aScholarship.SCHLR_USER_VARBL31.Length==0) ? "" : ("<b>Reference Letters : </b>" + aScholarship.SCHLR_USER_VARBL31 + " reference letter(s) needed.");
+                data.referenceletter = (aScholarship.SCHLR_USER_VARBL31.Length == 0) ? "" : ("<b>Reference Letters : </b>" + aScholarship.SCHLR_USER_VARBL31 + " reference letter(s) needed.");
                 if (aScholarship.SCHLR_USER_VARBL32.Length > 0)
                 {
                     String deadline = aScholarship.SCHLR_USER_VARBL32;
@@ -194,14 +194,14 @@ namespace Scholarship.Models
                 else data.college = "";
                 //if (!DBNull.Value.Equals(dt.Rows[i]["FUND_DEPT_DESC"])) data.communityservice = dt.Rows[i]["FUND_DEPT_DESC"];
                 //if (!DBNull.Value.Equals(dt.Rows[i]["FUND_DEPT_DESC"])) data.deadline = dt.Rows[i]["FUND_DEPT_DESC"];
-                
+
                 ///county...
             }
             System.Diagnostics.Debug.WriteLine("sql : " + sqlstr);
             System.Diagnostics.Debug.WriteLine("params : " + fundAcct + ":" + scholarNum);
             System.Diagnostics.Debug.WriteLine("Data : " + data.title);
             return data;
-            
+
         }
         public List<Scholarship> GetScholarships(SearchObject searchObject)
         {
@@ -220,14 +220,14 @@ namespace Scholarship.Models
             if (department.Equals("-1")) department = "%%";
              * 
              * */
-            List<OracleParameter> parameters=new List<OracleParameter>();
+            List<OracleParameter> parameters = new List<OracleParameter>();
             if (searchObject.title != null && !searchObject.title.Trim().Equals("")) //decided to allow for empty title after testing performance with toad. satisfactory for 1000 rows if selecting 3 cols
             {
-                sqlstr += " AND regexp_like(FRML_SCHLRSHP_NAME, :title, 'i') "; 
+                sqlstr += " AND regexp_like(FRML_SCHLRSHP_NAME, :title, 'i') ";
                 parameters.Add(new OracleParameter("title", searchObject.title));
             }
-            
-            if (searchObject.college!=null && !searchObject.college.Equals("-1"))
+
+            if (searchObject.college != null && !searchObject.college.Equals("-1"))
             {
                 sqlstr += " and f.FUND_COLL_ATTRB like :college or f.FUND_COLL_ATTRB IS NULL OR f.FUND_COLL_ATTRB=''"; //no need regex since we have dropdown for these
                 parameters.Add(new OracleParameter("college", searchObject.college));
@@ -242,17 +242,17 @@ namespace Scholarship.Models
                 sqlstr += " and uu.USER_CD like :year and su.USER_GRP='SCHYR'";
                 parameters.Add(new OracleParameter("schoolYear", searchObject.schoolYear));
             }
-            if (searchObject.major!=null && !searchObject.major.Trim().Equals("") )
+            if (searchObject.major != null && !searchObject.major.Trim().Equals(""))
             {
                 sqlstr += " and regexp_like(uu.USER_CD_DESCR, :major, 'i') and su.USER_GRP='SCHMJ' ";
                 parameters.Add(new OracleParameter("major", searchObject.major));
             }
-            if (searchObject.undergradGPA!=null && !searchObject.undergradGPA.Trim().Equals(""))
+            if (searchObject.undergradGPA != null && !searchObject.undergradGPA.Trim().Equals(""))
             {
                 sqlstr += " and CAST(SCHLR_USER_VARBL13 AS number) <= :undergradGPA ";
                 parameters.Add(new OracleParameter("undergradGPA", searchObject.undergradGPA));
             }
-            if (searchObject.gradGPA!=null && !searchObject.gradGPA.Trim().Equals(""))
+            if (searchObject.gradGPA != null && !searchObject.gradGPA.Trim().Equals(""))
             {
                 sqlstr += " and CAST(SCHLR_USER_VARBL14 AS number) <= :gradGPA ";
                 parameters.Add(new OracleParameter("gradGPA", searchObject.gradGPA));
@@ -265,9 +265,9 @@ namespace Scholarship.Models
 
             //OracleParameterCollection parameters = new OracleParameterCollection();
             //OracleParameter[] parameters = new OracleParameter[3];
-            
-            DataTable dt = query(sqlstr,parameters);
-            List<Scholarship> ScholarshipList=new List<Scholarship>();
+
+            DataTable dt = query(sqlstr, parameters);
+            List<Scholarship> ScholarshipList = new List<Scholarship>();
             Scholarship aScholarship;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -277,38 +277,37 @@ namespace Scholarship.Models
                 //System.Diagnostics.Debug.WriteLine(t.ToString());
                 //System.Diagnostics.Debug.WriteLine(t.GetFields().Count());
                 //System.Diagnostics.Debug.WriteLine(t.GetProperties().Count());
-                
+
                 //var schFields = aScholarship.GetType().GetProperties(); // I called this inspectionReportfields because the entity properties correspond to form/report fields I'm generating from this data.
 
-                    /*
-                     * remove below 10/16/2014 to select just 3 columns needed for search.
-                foreach (FieldInfo info in t.GetFields())
+                /*
+                 * remove below 10/16/2014 to select just 3 columns needed for search.
+            foreach (FieldInfo info in t.GetFields())
+            {
+                //var propName=field.Name; 
+                //var p = GetType().GetField("aScholarship").GetValue(this);
+                //p.GetType().GetProperty(propName).SetValue(p, dt.Rows[i][propName], null);
+                if (!DBNull.Value.Equals(dt.Rows[i][info.Name]))
                 {
-                    //var propName=field.Name; 
-                    //var p = GetType().GetField("aScholarship").GetValue(this);
-                    //p.GetType().GetProperty(propName).SetValue(p, dt.Rows[i][propName], null);
-                    if (!DBNull.Value.Equals(dt.Rows[i][info.Name]))
+                    if (info.FieldType==typeof(string))
                     {
-                        if (info.FieldType==typeof(string))
-                        {
-                            info.SetValue(aScholarship, dt.Rows[i][info.Name].ToString().Trim());
-                        }else{
-                            info.SetValue(aScholarship, dt.Rows[i][info.Name]);
-                        }
+                        info.SetValue(aScholarship, dt.Rows[i][info.Name].ToString().Trim());
                     }else{
-                        if (info.FieldType == typeof(string)) info.SetValue(aScholarship, "");
+                        info.SetValue(aScholarship, dt.Rows[i][info.Name]);
                     }
-
-                    //aScholarship.get
-                    //GetValue(aScholarship,null);
-                    
-                    //System.Diagnostics.Debug.Write(info.Name);
-                    //System.Diagnostics.Debug.Write(field);
+                }else{
+                    if (info.FieldType == typeof(string)) info.SetValue(aScholarship, "");
                 }
-                     * */
-                aScholarship.SCHLRSHP_NUM=dt.Rows[i]["SCHLRSHP_NUM"].ToString().Trim();
-                aScholarship.FUND_ACCT=dt.Rows[i]["FUND_ACCT"].ToString().Trim();
-                aScholarship.FRML_SCHLRSHP_NAME=dt.Rows[i]["FRML_SCHLRSHP_NAME"].ToString().Trim();
+                //aScholarship.get
+                //GetValue(aScholarship,null);
+                    
+                //System.Diagnostics.Debug.Write(info.Name);
+                //System.Diagnostics.Debug.Write(field);
+            }
+                 * */
+                aScholarship.SCHLRSHP_NUM = dt.Rows[i]["SCHLRSHP_NUM"].ToString().Trim();
+                aScholarship.FUND_ACCT = dt.Rows[i]["FUND_ACCT"].ToString().Trim();
+                aScholarship.FRML_SCHLRSHP_NAME = dt.Rows[i]["FRML_SCHLRSHP_NAME"].ToString().Trim();
                 System.Diagnostics.Debug.WriteLine("Row : " + i.ToString() + ":" + aScholarship.FRML_SCHLRSHP_NAME);
                 //System.Diagnostics.Debug.WriteLine("Row : " + i.ToString());
                 ScholarshipList.Add(aScholarship);

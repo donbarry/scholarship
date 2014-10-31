@@ -21,6 +21,7 @@ namespace Scholarship.Models
         public String financialneed { get; set; }
         public String international { get; set; }
         public String communityservice { get; set; }
+        public String referenceletter { get; set; }
 
     }
 }
