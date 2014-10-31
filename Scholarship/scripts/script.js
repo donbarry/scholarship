@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 });
 
-function getSearchString() {
+function getSearchString(num) {
     var search = "";
     var title = checkNull($("#title").val());
     var department = checkNull($("#department").val());
@@ -48,7 +48,9 @@ function getSearchString() {
     if (gradGPA != "") search += (gradGPA + ",");
     if (highschoolGPA != "") search += (highschoolGPA + ",");
     search = search.substring(0, search.length - 1);
-    search = "Your search results for " + search + " below...";
+    
+    search = "Your search results for \"" + search + "\" below...";
+    if (num==null || num===undefined || num==0 ) search= "No search results for \"" + search + "\"";
     return search;
 }
 function checkNull(strg) {
@@ -73,23 +75,17 @@ function find() {
         $.each(data, function (key, item) {
             // Add a list item for the product.
             linkurl = $('<a>', { text: item.FRML_SCHLRSHP_NAME, href: "ScholarshipPage.html?f=" + item.FUND_ACCT.trim() + "&s=" + item.SCHLRSHP_NUM.trim(), target: "_blank" }) //consider accordion
-            $('<li>').append(linkurl).appendTo("#scholarship");
+            linkTD = $('<td>').append(linkurl);
+            //$('<li>').append(linkurl).appendTo("#scholarship");
+            $('<tr>').append(linkTD).appendTo("#scholarship");
             //$('#scholarship').append("<li><a href='" + "ScholarshipPage.html" + "'>" + item.SCHLRSHP_TITLE + "</a></li>");
         });
         console.log(data.length);
         var num = data.length;
         $("#progressbar").progressbar({ value: true });
-        $("#titledisplay").text($("#title").val());
-        $("#departmentdisplay").text($("#department").val());
-        $("#collegedisplay").text($("#college").val());
-        $("#schoolyeardisplay").text($("#schoolyear").val());
-        $("#majordisplay").text($("#major").val());
-        $("#undergraddisplay").text($("#undergradGPA").val());
-        $("#gradGPAdisplay").text($("#gradGPA").val());
-        $("#highschoolGPAdisplay").text($("#highschoolGPA").val());
-        //$("#searchinfo").removeClass("hide");
-        $("#searchinfo").text(getSearchString());
+        $("#searchinfo").text(getSearchString(num));
         $("#msg").text(num + " Found.");
+        $("html,body").animate({ scrollTop: $("#scholarship").offset().top - 100 });
         //console.log("Data: " + data + "\nStatus: " + status);
     });
 
