@@ -23,6 +23,7 @@ namespace Scholarship.Controllers
             return scholarship;
         }
         //[Route("{id:int}")]
+        
         [Route("title/{title}/purpose/{purpose}")]
         public IHttpActionResult GetScholarship(String title, String purpose)
         {

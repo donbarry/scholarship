@@ -3,6 +3,7 @@ var uri = 'api/scholarships';
 
 $(document).ready(function () {
     $("#progressbar").progressbar({ value: false });
+    $("#central").attr("href","https://centrallogin.illinoisstate.edu:443/login?service=http://dev21.iwss.ilstu.edu/Index.html");
     $.getJSON("api/dropdowndata")
         .done(function (data) {
             $('#department').append($('<option>').text("(Any Department)").attr('value', -1));
@@ -18,13 +19,13 @@ $(document).ready(function () {
             $.each(data.schoolyears, function (key, item) {
                 $('#schoolyear').append($('<option>').text(item.USER_CD_DESCR).attr('value', item.USER_CD));
             });
-
+            $("#progressbar").progressbar({ value: true });
         })
         .fail(function (jqXHR, textStatus, err) {
             $('#department').text('Error: ' + err);
         });
 
-    $("#progressbar").progressbar({ value: true });
+    
 
 
 });
