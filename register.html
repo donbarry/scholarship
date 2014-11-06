@@ -1,0 +1,28 @@
+﻿<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" ng-click="$hide()">&times;</button>-->
+                <h4 class="modal-title" ng-bind-html="title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-login" role="form" name="myForm" id="registerform">
+                    <h2 class="form-login-heading">Register New Client</h2>
+                    <input id="clientname" type="text" class="form-control" placeholder="Application Name" data-ng-model="vm.clientApplication.clientName" required autofocus>
+                    <input id="clienttoken" type="text" class="form-control" placeholder="Secret Key" data-ng-model="vm.clientApplication.clientToken" required>
+                    <!--<button class="btn btn-lg btn-info btn-block" type="submit" data-ng-click="register()">Submit</button>-->
+
+
+                    <!--<div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">-->
+                    <!--{{vm.message}}-->
+                    <!--</div>-->
+                </form>            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-default" ng-click="$hide()">Close</button>-->
+                <!--<button type="button" class="btn btn-primary" ng-click="$hide()">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="$hide()">Close</button>
+                <button id="register" type="button" ng-disabled="myForm.$invalid" class="btn btn-primary" data-ng-click="vm.registerClient();  $hide()">Register</button>
+            </div>
+        </div>
+    </div>
+</div>

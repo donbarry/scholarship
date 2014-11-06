@@ -26,7 +26,7 @@ namespace Scholarship.Models
               user,
               pass);
         }
-        private DataTable query(string sqlstr, List<OracleParameter> parameters)
+        public DataTable query(string sqlstr, List<OracleParameter> parameters)
         {
 
             ConnectionString = OracleConnString("atoraagilon01.at.illinoisstate.edu", "1521", "ONEPRD", "BUAJOKU", "Hu481919");
@@ -60,6 +60,35 @@ namespace Scholarship.Models
                 conn.Close(); // close the oracle connection
             }
             return dt;
+        }
+        public int queryExecute(string sqlstr, List<OracleParameter> parameters)
+        {
+
+            ConnectionString = OracleConnString("atoraagilon01.at.illinoisstate.edu", "1521", "ONEPRD", "BUAJOKU", "Hu481919");
+            //ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ScholarshipsEntities"].ConnectionString;
+            int result = 0;
+
+            using (OracleConnection conn = new OracleConnection(ConnectionString)) // connect to oracle
+            {
+                conn.Open(); // open the oracle connection
+                using (OracleCommand comm = new OracleCommand(sqlstr, conn)) // create the oracle sql command
+                {
+                    if (parameters != null)
+                    {
+                        foreach (OracleParameter parameter in parameters)
+                        {
+                            comm.Parameters.Add(parameter);
+                            System.Diagnostics.Debug.WriteLine("Param and val");
+                            System.Diagnostics.Debug.Write(parameter.ParameterName);
+                            System.Diagnostics.Debug.Write(parameter.Value);
+                        }
+                    }
+                    result=comm.ExecuteNonQuery();
+                    comm.Dispose();
+                }
+                conn.Close(); // close the oracle connection
+            }
+            return result;
         }
         public DropDownData GetDropDownData()
         {

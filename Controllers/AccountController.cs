@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scholarship.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,14 +11,25 @@ namespace Scholarship.Controllers
     public class AccountController : ApiController
     {
         [Route("api/login")]
-        public IHttpActionResult GetScholarship(String title, String purpose)
+        public IHttpActionResult Login(UserModel user)
         {
-            var scholarship = db.SCHLRSHPs.Where(s => (s.FRML_SCHLRSHP_NAME.Contains(title) || s.SCHLRSHP_TITLE.Contains(title) || s.SCHLRSHP_PRPS.Contains(purpose)));
-            if (scholarship == null)
-            {
+            UserDatabase udb = new UserDatabase();
+            user = udb.ValidUser(user);
+            if (user.accessToken.Equals(""))
+                return Unauthorized();
+            else
+                return Ok(user);
+        }
+
+        [Route("api/register")]
+        public IHttpActionResult Register(UserModel user)
+        {
+            UserDatabase udb = new UserDatabase();
+            string message= udb.RegisterUser(user);
+            if (message.Equals(""))
+                return Ok(user);
+            else
                 return NotFound();
-            }
-            return Ok(scholarship);
         }
 
     }

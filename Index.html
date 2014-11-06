@@ -28,7 +28,8 @@
                     <li data-ng-hide="!authentication.isAuth"><a href="#/favorites">My Favorites</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a id="central" href="#/login">Login</a></li>
-                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Register</a></li>
+                    <li data-ng-hide="authentication.isAuth"> <a href="#/signup" data-template="register.html" bs-modal="modal">Register</a></li>
+                    
                 </ul>
             </div>
         </div>

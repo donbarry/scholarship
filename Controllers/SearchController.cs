@@ -25,7 +25,7 @@ namespace Scholarship.Controllers
         //[Route("{id:int}")]
         
         [Route("title/{title}/purpose/{purpose}")]
-        public IHttpActionResult GetScholarship(String title, String purpose)
+        public  IHttpActionResult GetScholarship(String title, String purpose)
         {
             //String idString = id.ToString();
             
